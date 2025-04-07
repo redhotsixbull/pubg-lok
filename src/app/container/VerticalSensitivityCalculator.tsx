@@ -112,14 +112,13 @@ export default function VerticalSensitivityCalculator() {
       const [dpi, sens] = inputs.map(parseFloat);
       const standardDpi = 800;
       const standardSens = 11;
-      //const standardEdpi = (standardDpi * standardSens) / 11;
+
       const dpiDiff = Math.log(dpi / standardDpi) / Math.log(2);
       const mySens = sens + 15 * dpiDiff;
 
-
       const result = standardDpi * 2 ** ((mySens - standardSens) / 15);
 
-      setPubgResults([{ label: "eDPI", value: result.toFixed(2) }]);
+      setPubgResults([{ label: "eDPI", value: result.toFixed(1) }]);
     } catch {
       setPubgResults([{ label: "오류", value: "잘못된 입력" }]);
     }
